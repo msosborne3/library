@@ -27,6 +27,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # Loads the login page, which contains a form used to login
+  get '/login' do
+    # If a user is already logged in, then they cannot log in again, so they'll be redirected to their profile page
+    if logged_in?
+      @user = current_user
+      redirect to "/users/#{current_user.slug}"
+    else
+      erb :"users/login"
+    end
+  end
+
 
 
 
