@@ -38,6 +38,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # Get's the input from the form and logs in the user as long as a user is found with the given username
+  # and that user has a matching password
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/users/#{current_user.slug}"
+    else
+      redirect to '/login'
+    end
+  end
+
 
 
 
