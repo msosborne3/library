@@ -1,0 +1,30 @@
+<h2>Add a book to your Library!</h2>
+
+<%# Form to add a book to library, either from existing books or a new book. %>
+<form method="POST" action="/books">
+
+  <h4>Choose from exisiting books:</h4>
+    <% Book.all.each do |book| %>
+      <input id="<%= book.name %>" type="checkbox" name="books[]" value="<%= book.id %>"><%= book.name %> - <%= book.author %>
+      <br>
+    <% end %>
+
+  <br>
+
+  <h4>Or add a new book:</h4>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <br>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author">
+
+    <br>
+
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre">
+
+  <br>
+  <input type="submit" value="submit">
+</form>
