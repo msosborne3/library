@@ -9,6 +9,11 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "library_secret"
   end
 
+  # Loads the homepage
+  get '/' do
+    erb :index
+  end
+
   # Helper methods
   helpers do
     # Check if user is logged in
